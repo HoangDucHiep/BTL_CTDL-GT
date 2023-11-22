@@ -27,6 +27,12 @@ class GameList
         {
             cout << "\n" << list[0].getPrice();
         }
+
+/*         StoreGame search(string infor)
+        {
+            
+        } */
+
         // Thêm hàm ghi dữ liệu vào file .DAT
         void writeToFile();
 
@@ -63,22 +69,18 @@ void GameList::ShowList()
 
 void GameList::writeToFile()
 {
-    ofstream outFile("./store_game_list_out.txt");
-    string data;
-
+    ofstream outFile("./store_game_list.txt");
 
     for(auto game : list)
     {
-        data = "";
-        data += (game.getName() + "\t");
-        data += (game.getPublisher() + "\t");
-        data += (game.getGenre() + "\t");
-        data += (game.getCode() + "\t");
+        outFile << (game.getName() + "\t");
+        outFile << (game.getPublisher() + "\t");
+        outFile << (game.getGenre() + "\t");
+        outFile << (game.getCode() + "\t");
         Date tempDate = game.getReleaseDate();
-        data += (to_string(tempDate.getDay()) + "/" + to_string(tempDate.getMonth()) + "/" + to_string(tempDate.getYear()) + "\t");
-        data += (to_string(game.getPrice()) + "\t");
-        data += (to_string(game.getInStock()) + "\n");
-        outFile << data;
+        outFile << (to_string(tempDate.getDay()) + "/" + to_string(tempDate.getMonth()) + "/" + to_string(tempDate.getYear()) + "\t");
+        outFile << (to_string(game.getPrice()) + "\t");
+        outFile << (to_string(game.getInStock()) + "\n");
     }
 }
 
