@@ -12,45 +12,44 @@
 
 #include "store_game.h"
 
-class GameList
+class StoreGameList
 {
     private:
         vector<StoreGame> list;
         unsigned int noDisk;
+        void writeToFile();
+        void readFromFile();
     public:
-        GameList();
-        ~GameList();
+        StoreGameList();
+        ~StoreGameList();
         void addGame();
         void removeGame();
         void ShowList();
-        void ShowGame()
-        {
-            cout << "\n" << list[0].getPrice();
-        }
+        void ShowGame();
+        void SortbyName(bool ascending = true);
 
-/*         StoreGame search(string infor)
+        void SortbyCode(bool ascending = true);
+
+/* 
+        StoreGame search(string Code)
         {
-            
+            SortbyCode();
         } */
 
-        // Thêm hàm ghi dữ liệu vào file .DAT
-        void writeToFile();
 
-        // Thêm hàm đọc dữ liệu từ file .DAT
-        void readFromFile();
 };
 
-GameList::GameList()
+StoreGameList::StoreGameList()
 {
-    noDisk = 0;
+    readFromFile();
 }
 
-GameList::~GameList()
+StoreGameList::~StoreGameList()
 {
-
+    writeToFile();
 }
 
-void GameList::addGame()
+void StoreGameList::addGame()
 {
     StoreGame newGame;
     newGame.getInfor();
@@ -58,7 +57,7 @@ void GameList::addGame()
     noDisk++;
 }
 
-void GameList::ShowList()
+void StoreGameList::ShowList()
 {
     for(int i = 0; i < noDisk; i++)
     {
@@ -67,7 +66,7 @@ void GameList::ShowList()
     }
 }
 
-void GameList::writeToFile()
+void StoreGameList::writeToFile()
 {
     ofstream outFile("./store_game_list.txt");
 
@@ -84,8 +83,9 @@ void GameList::writeToFile()
     }
 }
 
-void GameList::readFromFile()
+void StoreGameList::readFromFile()
 {
+    noDisk = 0;
     ifstream inFile("./store_game_list.txt");
     string s;
     while(inFile)   
@@ -128,15 +128,37 @@ void GameList::readFromFile()
         newGame.setInstock(stoi(temp));
 
         list.push_back(newGame);
+        noDisk++;
     }
 
     inFile.close();
-    for(auto game : list)
-    {
-        game.showInfor();
-    }
 }
 
+void StoreGameList::ShowGame()
+{
+    cout << "\n" << list[0].getPrice();
+}
 
+void StoreGameList::SortbyName(bool ascending = true)
+        {
+            sort(list.begin(), list.end(), [ascending](const StoreGame& game1, const StoreGame& game2) {
+                if (ascending) {
+                    return game1.getName() < game2.getName();
+                } else {
+                    return game1.getName() > game2.getName();
+                }
+            });
+        }
+
+void StoreGameList::SortbyCode(bool ascending = true)
+{
+    sort(list.begin(), list.end(), [ascending](const StoreGame& game1, const StoreGame& game2) {
+        if (ascending) {
+            return game1.getCode() < game2.getCode();
+        } else {
+            return game1.getCode() > game2.getCode();
+        }
+    });
+}
 
 #endif

@@ -1,12 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "store_game_list.h"
+#include "rented_game_list.h"
 
 
 int main(){
-    
-    GameList list;
-    list.readFromFile();
-    list.writeToFile();
+    RentedGameList test;
+    test.ShowList();
+    return 0;
 }
