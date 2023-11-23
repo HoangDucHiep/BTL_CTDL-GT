@@ -10,7 +10,9 @@ class RentedGame : public GameDisk
         Date expiredDate;
         unsigned int rentDays;
     public:
-        RentedGame(string name = "N/A", string publisher = "N/A", string genre = "N/A", string code = "N/A", Date releaseDate = {1, 1, 1}, unsigned int price = 0, Date start = {1, 1, 1}, Date end = {1, 1, 1}, unsigned int rentDays = 0) : GameDisk(name, publisher, genre, code, releaseDate, price)
+        RentedGame(string name = "N/A", string publisher = "N/A", string genre = "N/A", string code = "N/A", Date releaseDate = {1, 1, 1}
+        , unsigned int price = 0, Date start = {1, 1, 1}, Date end = {1, 1, 1}, unsigned int rentDays = 0)
+        : GameDisk(name, publisher, genre, code, releaseDate, price)
         {
             rentDate = start;
             expiredDate = end;

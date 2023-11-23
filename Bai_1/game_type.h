@@ -24,9 +24,9 @@ class GameDisk
     public:
         GameDisk(string name, string publisher, string genre, string code,  Date releaseDate , unsigned int price);
             //constructor
-        void getInfor();
+        virtual void getInfor();
             //Update game's information
-        void showInfor() const;
+        virtual void showInfor() const;
             //Show game's information 
         string getName() const;
             //return game's name
@@ -38,46 +38,23 @@ class GameDisk
             //return number of items in stock
         string getCode() const;
             //return game's code
+        Date getReleaseDate() const;
+            //return game's release date
 
-        Date getReleaseDate() const
-        {
-            return releaseDate;
-        }
-        
-        void setName(string n)
-        {
-            name = n;
-        };
-
-        void setPublisher(string p)
-        {
-            publisher = p;
-        }
-
-        void setGenre(string g)
-        {
-            genre = g;
-        }
-
-        void setPrice(unsigned int p)
-        {
-            price = p;
-        }
-
-        void setCode(string c)
-        {
-            code = c;
-        }
-
-        void setReleaseDate(unsigned int d, unsigned int m, unsigned int y)
-        {
-            releaseDate.setDate(d, m, y);
-        }
-
-        bool operator == (const GameDisk& other)
-        {
-            return (code == other.code);
-        }
+        void setName(string n);
+            //set game's name
+        void setPublisher(string p);
+            //set game's publisher
+        void setGenre(string g);
+            //set game's genre
+        void setPrice(unsigned int p);
+            //set game's price
+        void setCode(string c);
+            //set game's code
+        void setReleaseDate(unsigned int d, unsigned int m, unsigned int y);
+            //set game's release date
+            
+        //bool operator == (const GameDisk& other);
 };
 
 
@@ -120,7 +97,6 @@ void GameDisk::showInfor() const
     cout << "\nGia: " << price;
 }
 
-
 unsigned int GameDisk::getPrice() const
 {
     return price;
@@ -144,5 +120,49 @@ string GameDisk::getCode() const
     return code;
 }         
 
+Date GameDisk::getReleaseDate() const
+{
+    return releaseDate;
+}
+
+void GameDisk::setName(string n)
+{
+    name = n;
+};
+
+void GameDisk::setPublisher(string p)
+{
+    publisher = p;
+}
+
+void GameDisk::setPublisher(string p)
+{
+    publisher = p;
+}
+
+void GameDisk::setGenre(string g)
+{
+    genre = g;
+}
+
+void GameDisk::setPrice(unsigned int p)
+{
+    price = p;
+}
+
+void GameDisk::setCode(string c)
+{
+    code = c;
+}
+
+void GameDisk::setReleaseDate(unsigned int d, unsigned int m, unsigned int y)
+{
+    releaseDate.setDate(d, m, y);
+}
+
+/* bool GameDisk::operator == (const GameDisk& other)
+        {
+    return (code == other.code);
+} */
 
 #endif

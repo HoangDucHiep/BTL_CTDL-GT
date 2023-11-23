@@ -19,6 +19,7 @@ class RentedGameList
         unsigned int noDisk;
         void writeToFile();
         void readFromFile();
+        
     public:
         RentedGameList();
         ~RentedGameList();
@@ -27,7 +28,6 @@ class RentedGameList
         void ShowList();
         void ShowGame();
         void SortbyName(bool ascending = true);
-
         void SortbyCode(bool ascending = true);
 
 /* 
@@ -46,7 +46,6 @@ RentedGameList::RentedGameList()
 
 RentedGameList::~RentedGameList()
 {
-    writeToFile();
 }
 
 void RentedGameList::addGame()
@@ -68,7 +67,8 @@ void RentedGameList::ShowList()
 
 void RentedGameList::writeToFile()
 {
-    ofstream outFile("./rented_list_test.txt");
+    string filePath = "customer_rented/" /* fileName +  ".txt"*/;
+    ofstream outFile(filePath);
 
     for(auto game : list)
     {
@@ -88,8 +88,9 @@ void RentedGameList::writeToFile()
 
 void RentedGameList::readFromFile()
 {
+    string filePath = "customer_rented/" /* fileName +  ".txt"*/;
     noDisk = 0;
-    ifstream inFile("./rented_list_test.txt");
+    ifstream inFile(filePath);
     string s;
     while(inFile)   
     {

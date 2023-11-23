@@ -139,7 +139,7 @@ void StoreGameList::ShowGame()
     cout << "\n" << list[0].getPrice();
 }
 
-void StoreGameList::SortbyName(bool ascending = true)
+/* void StoreGameList::SortbyName(bool ascending = true)
         {
             sort(list.begin(), list.end(), [ascending](const StoreGame& game1, const StoreGame& game2) {
                 if (ascending) {
@@ -160,5 +160,5 @@ void StoreGameList::SortbyCode(bool ascending = true)
         }
     });
 }
-
+ */
 #endif

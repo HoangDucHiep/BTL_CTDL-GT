@@ -28,6 +28,8 @@ class StoreGame : public GameDisk
         }
             //Show game's information 
 
+
+
         unsigned int getInStock() const
         {
             return inStock;

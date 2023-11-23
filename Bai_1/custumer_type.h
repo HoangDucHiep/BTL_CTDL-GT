@@ -19,7 +19,7 @@ class customer
 
 
     public:
-        customer() : rentedList(/* fullName - update later*/)
+        customer()
         {
             fullName = "";
             phoneNo = "";
@@ -56,12 +56,13 @@ class customer
 
         void rentGame()
         {
-            RentedGame newGame;
-            newGame.getInfor();
+            rentedList.addGame();
         }
 
-
-
+        void  returnGame()
+        {
+            rentedList.removeGame();
+        }   
 
 };
 
